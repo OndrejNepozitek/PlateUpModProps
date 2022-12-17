@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ONe.PlateUp.Mod.Props</id>
+    <version>0.0.6</version>
+    <authors>Dejana Tesic, Rajeev Dey</authors>
+    <projectUrl>https://github.com/OndrejNepozitek/PlateUp-Mod-Props</projectUrl>
+    <license type="expression">MIT</license>
+    <description>Build props for a PlateUp workshop mod</description>
+  </metadata>
+  <files>
+    <file src="ONe.PlateUp.Mod.Props.props" target="build" />
+  </files>
+</package>

@@ -1,0 +1,1 @@
+dotnet pack ONe.PlateUp.Mod.Props.csproj -p:NoBuild=true -p:NoDefaultExcludes=true -o publish

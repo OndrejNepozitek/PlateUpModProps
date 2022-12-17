@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONe.PlateUp.Mod.Props", "ONe.PlateUp.Mod.Props\ONe.PlateUp.Mod.Props.csproj", "{DA5FFD66-35FB-43CD-8CA2-ED0A889629DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONe.PlateUp.Mod.Props.Test", "ONe.PlateUp.Mod.Props.Test\ONe.PlateUp.Mod.Props.Test.csproj", "{82A4AEF2-3AD3-46DA-81F5-33D2D245857C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA5FFD66-35FB-43CD-8CA2-ED0A889629DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA5FFD66-35FB-43CD-8CA2-ED0A889629DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA5FFD66-35FB-43CD-8CA2-ED0A889629DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA5FFD66-35FB-43CD-8CA2-ED0A889629DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A4AEF2-3AD3-46DA-81F5-33D2D245857C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A4AEF2-3AD3-46DA-81F5-33D2D245857C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A4AEF2-3AD3-46DA-81F5-33D2D245857C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A4AEF2-3AD3-46DA-81F5-33D2D245857C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,15 +1,20 @@
 <Project>
+    <PropertyGroup>
+        <PlateUpDir Condition="'$(PlateUpDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\</PlateUpDir>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
+    
     <ItemGroup>
         <Reference Include="$(PlateUpDir)\PlateUp_Data\Managed\Kitchen*.dll">
+            <Private>false</Private>
         </Reference>
         <Reference Include="$(PlateUpDir)\PlateUp_Data\Managed\Unity*.dll">
+            <Private>false</Private>
         </Reference>
     </ItemGroup>
-
-    <!--Launch a Process in Parallel-->
+    
     <UsingTask TaskName="ExecAsync" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
         <ParameterGroup>
-            <!--The file path is the full path to the executable file to run-->
             <FilePath ParameterType="System.String" Required="true" />
             <Arguments ParameterType="System.String" Required="false" />
         </ParameterGroup>
@@ -30,20 +35,32 @@
     <Target Name="CopyModFiles" AfterTargets="Build">
         <PropertyGroup>
             <PlateUpDir Condition="'$(PlateUpDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\</PlateUpDir>
-            <ModName Condition="'$(ModName)' == ''">$(ProjectName)</ModName>
             <ModsDir Condition="'$(ModsDir)' == ''">Mods</ModsDir>
-            <ModDir Condition="'$(OutputDir)' == ''">$([System.IO.Path]::Combine($(PlateUpDir),$(ModsDir),$(ModName)))</ModDir>
-            <ContentDir Condition="'$(ContentDir)' == ''">$([System.IO.Path]::Combine($(ModDir),'Content'))</ContentDir>
+            <ModName Condition="'$(ModName)' == ''">$(ProjectName)</ModName>
+            <ModDir Condition="'$(ModDir)' == ''">$([System.IO.Path]::Combine($(PlateUpDir),$(ModsDir),$(ModName)))</ModDir>
+            <ModContentDir Condition="'$(ModContentDir)' == ''">$([System.IO.Path]::Combine($(ModDir),'Content'))</ModContentDir>
         </PropertyGroup>
+
+        <Error
+            Text="PlateUpDir path does not exist!"
+            Condition="!Exists('$(PlateUpDir)')" 
+        />
+        
+        <ItemGroup>
+            <ModFiles Include="$(TargetDir)\**\*.*" />
+        </ItemGroup>
         
         <Message Importance="High" Text="Copying mod files.." />
-        <Message Importance="High" Text="Content directory: $(ContentDir)" />
-        <MakeDir Directories="$(ContentDir)"/>
-        <Exec Command="copy /Y &quot;$(TargetDir)$(AssemblyName).dll&quot; &quot;$(ContentDir)\$(AssemblyName).dll&quot;" />
-        <Exec Command="copy /Y &quot;$(TargetDir)$(AssemblyName).pdb&quot; &quot;$(ContentDir)\$(AssemblyName).pdb&quot;" />
+        <Message Importance="High" Text="Content directory: $(ModContentDir)" />
+        <MakeDir Directories="$(ModContentDir)"/>
+        
+        <Copy
+            SourceFiles="@(ModFiles)"
+            DestinationFolder="$(ModContentDir)"
+        />
     </Target>
 
-    <Target Name="LaunchPlateUp" AfterTargets="PostBuildEvent" Condition="'$(LaunchGameAfterBuild)' == 'true'">
+    <Target Name="LaunchPlateUp" AfterTargets="Build" Condition="'$(LaunchGameAfterBuild)' == 'true'">
         <PropertyGroup>
             <PlateUpExePath Condition="'$(PlateUpExePath)' == ''">$([System.IO.Path]::Combine($(PlateUpDir),'PlateUp.exe'))</PlateUpExePath>
         </PropertyGroup>

@@ -32,7 +32,15 @@
         </Task>
     </UsingTask>
 
-    <Target Name="CopyModFiles" AfterTargets="Build">
+    <Target Name="SetupProperties" AfterTargets="Build">
+        <PropertyGroup>
+            <CopyModFiles Condition="'$(CopyModFiles)' == ''">true</CopyModFiles>
+        </PropertyGroup>
+
+        <Message Importance="High" Text="Mod files are not copied (disabled with CopyModFiles)" Condition="'$(CopyModFiles)' != 'true'" />
+    </Target>
+
+    <Target Name="CopyModFiles" AfterTargets="Build" Condition="'$(CopyModFiles)' == 'true'">
         <PropertyGroup>
             <PlateUpDir Condition="'$(PlateUpDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\</PlateUpDir>
             <ModsDir Condition="'$(ModsDir)' == ''">Mods</ModsDir>

@@ -1,6 +1,8 @@
 # PlateUp Mod Props
 
-![Nuget](https://img.shields.io/nuget/v/ONe.PlateUp.Mod.Props)
+<a href="https://www.nuget.org/packages/ONe.PlateUp.Mod.Props/">
+    <img src="https://img.shields.io/nuget/v/ONe.PlateUp.Mod.Props" alt="Nuget" />
+</a>
 
 This repository contains a Nuget package that aims to make it easier to develop PlateUp! Workshop mods.
 

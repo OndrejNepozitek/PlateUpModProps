@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ONe.PlateUp.Mod.Props</id>
-    <version>0.0.10</version>
+    <version>0.1.0</version>
     <authors>Ondrej Nepozitek</authors>
     <projectUrl>https://github.com/OndrejNepozitek/PlateUp-Mod-Props</projectUrl>
     <license type="expression">MIT</license>
